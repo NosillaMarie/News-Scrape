@@ -26,16 +26,11 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
-if(process.env.MONGODB_URI) {
-	console.log("Attempting to connect to MLAB");
-mongoose.connect("mongodb://heroku_290616kv:d6gv09k925ouo0jikcnr1nad2b@ds227565.mlab.com:27565/heroku_290616kv");
-
-}else {
-    mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/NewsScrape", {
-    useMongoClient: true
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/NewsScrape";
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI, {
+  useMongoClient: true
 });
-}
 
 var db = mongoose.connection;
 
