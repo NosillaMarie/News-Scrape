@@ -1,5 +1,5 @@
 // Requiring Article and Note models
-var Article = require("../models/article.js");
+var Article = require("../models/Article.js");
 var Note = require("../models/note.js");
 
 // Scraping tools
